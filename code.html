@@ -1,0 +1,538 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Inversiones FV | Soluciones Integrales y Multifacéticas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500&amp;family=Hanken+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9f9",
+                        "outline": "#877270",
+                        "tertiary-fixed-dim": "#e1c0a7",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary": "#775a19",
+                        "on-background": "#1a1c1c",
+                        "subtle-gold": "#C5A059",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "off-white": "#F9F9F9",
+                        "industrial-taupe": "#8C715B",
+                        "surface-container-low": "#f3f3f3",
+                        "tertiary-container": "#33200f",
+                        "secondary-fixed": "#ffdea5",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-tint": "#954742",
+                        "primary-fixed": "#ffdad7",
+                        "secondary-container": "#fed488",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#e9c176",
+                        "text-main": "#1A1A1A",
+                        "on-primary-container": "#cc726d",
+                        "on-tertiary-fixed": "#291808",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "deep-burgundy": "#4A0E0E",
+                        "on-primary-fixed": "#3d0506",
+                        "outline-variant": "#dac1bf",
+                        "on-tertiary-fixed-variant": "#59422f",
+                        "surface": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "on-tertiary-container": "#a3866f",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#544341",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "inverse-surface": "#2f3131",
+                        "on-primary-fixed-variant": "#77302d",
+                        "on-secondary-container": "#785a1a",
+                        "surface-container": "#eeeeee",
+                        "tertiary": "#1a0b01",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#4a0e0e",
+                        "background": "#f9f9f9",
+                        "inverse-primary": "#ffb3ad",
+                        "tertiary-fixed": "#ffdcc2",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#2a0002",
+                        "on-surface": "#1a1c1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-display": ["Manrope"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-md": ["Work Sans"],
+                        "label-bold": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "headline-display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-arc {
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card-shadow:hover {
+            box-shadow: 0 20px 40px -15px rgba(74, 14, 14, 0.15);
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .logo-scroll {
+            display: flex;
+            width: 200%;
+            animation: scroll 30s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-subtle-gold/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-outline-variant/20 shadow-sm transition-all duration-300">
+<nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4"><img alt="Inversiones FV Logo" class="h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjNfj9jGB9WW2mikG5LipIZ7PjbuiqF-2z5NRGci4kAtW6ALnAOY02RGPExkRBfiDcz-c7uiBVGsIGu3rcjjl-C_b9ZjPr9Pt8WkeZJmaTtv01DIiChps4g-9p1C-4nY-SJSbHv1IHvA_Hn7Lu7z8Arpn7QOFTc6J4jGvADVBCfaSJ5XxltA1KXoH4WC4oEi6c7sYPK454CiJc8nFnuRCRr2bua-7aWsUf4tTTC0kFFZf4F60m9Jyd84OpNPFXo1sE8yqvw34ENOM"></div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-deep-burgundy border-b-2 border-subtle-gold pb-1 font-bold font-label-bold text-label-bold" href="#inicio">Inicio</a>
+<a class="text-on-surface-variant hover:text-deep-burgundy transition-colors font-label-bold text-label-bold" href="#nosotros">Nosotros</a>
+<a class="text-on-surface-variant hover:text-deep-burgundy transition-colors font-label-bold text-label-bold" href="#servicios">Servicios</a>
+<a class="text-on-surface-variant hover:text-deep-burgundy transition-colors font-label-bold text-label-bold" href="#clientes">Clientes</a>
+<a class="text-on-surface-variant hover:text-deep-burgundy transition-colors font-label-bold text-label-bold" href="#contacto">Contacto</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-bold text-label-bold scale-95 active:scale-90 transition-transform hover:bg-deep-burgundy">
+                Solicitar Presupuesto
+            </button>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden" id="inicio">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-deep-burgundy/90 to-deep-burgundy/40 z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A panoramic composite image depicting a modern industrial landscape, a construction site with cranes, and a high-tech medical laboratory. The lighting is dramatic, with warm sunset tones contrasting against cool industrial blues, all unified by a premium, corporate aesthetic. The style is sharp and cinematic, suggesting multifaceted capability and professional excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu40NrC1dzgEmH3s-3sUgn3Hl_9cMV_8eajT-SfPvHGvmq8I_LBQwa3YqQNqS8nBNZxR0dt4ylHXDbu4S8XNVQs95gZ9s-tPxc850EX97qLZEGf8Fr7h9Dk4iouLvC3nMwtpotjCEKdnep-TvrlIQ0Q_YBY07kcoyRuHodeNUHoJvlef3ENJ0KI8vZGdtbsupZPvzH8UEubFWWCn6ki-YnEFBgXok9czRDCMjw7pQCgfZHJBHZvq5TG3u4A2CH94HjYk10SJ4hdwU">
+</div>
+<div class="relative z-20 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto grid md:grid-cols-2 gap-12 items-center">
+<div class="text-off-white space-y-6">
+<span class="inline-block px-4 py-1 bg-subtle-gold/20 border border-subtle-gold/40 rounded-full text-subtle-gold font-label-bold text-label-bold tracking-widest">RIF: J-41120824-8</span>
+<h1 class="font-headline-display text-headline-display max-w-xl">
+                    Soluciones Integrales y Multifacéticas para el Desarrollo Nacional
+                </h1>
+<p class="font-body-lg text-body-lg text-surface-variant/90 max-w-lg">
+                    Desde el sector automotriz hasta suministros médicos, industriales y petroquímicos. Diversificación, excelencia y compromiso social en un solo lugar.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<a class="bg-subtle-gold text-deep-burgundy px-8 py-4 rounded-lg font-label-bold text-label-bold hover:bg-off-white transition-all flex items-center gap-2" href="#servicios">
+                        Ver Servicios
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a class="border-2 border-off-white text-off-white px-8 py-4 rounded-lg font-label-bold text-label-bold hover:bg-off-white hover:text-deep-burgundy transition-all" href="#contacto">
+                        Contáctanos
+                    </a>
+</div>
+</div>
+<div class="hidden md:flex justify-end">
+<div class="relative w-80 h-80 lg:w-[450px] lg:h-[450px]">
+<div class="absolute inset-0 border-2 border-subtle-gold/30 rounded-full animate-[spin_20s_linear_infinite]"></div>
+<div class="absolute inset-4 border border-off-white/20 rounded-full"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-64 h-64 lg:w-96 lg:h-96 bg-off-white p-12 rounded-full shadow-2xl flex items-center justify-center">
+<img alt="Inversiones FV Central Logo" class="w-full h-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgasKsM52kDdlXmks5BAIxNLnsUhazSdDVPawhd6K7bdQ15Vw7_tWK3XOBwpNyqL4yzPF1M1GOyIicRkezghxp0sKASswikOcmw68bO4qGNr3G2AjS8s086IXSEM1NAKjDcT31xhSeIp-R40nVX5XxDL00kN-eD7xpAdfzUVSkw3dmBuO_-pv80nhjqKnCsQfgqVAhWyBReVCUazObfIzzAsskuN-u47AFnvunUzGw-UWwO_mf4e9XgAAuwij2oPpS2g5L_eU7FuM">
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Nosotros Section -->
+<section class="py-section-gap bg-surface relative overflow-hidden" id="nosotros">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-surface-container-low/50 -skew-x-12 translate-x-1/2"></div>
+<div class="px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto relative z-10">
+<div class="grid md:grid-cols-12 gap-12">
+<div class="md:col-span-7 space-y-8">
+<div class="space-y-4">
+<h2 class="text-deep-burgundy font-headline-lg text-headline-lg">Nosotros</h2>
+<div class="h-1.5 w-24 bg-subtle-gold"></div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Somos una empresa constituida con valores apegados a la responsabilidad y contribución social que nace con el objeto de prestar servicios y suministros en el ámbito automotriz como parte de un negocio familiar, sin embargo con la intención de diversificarnos, adaptarnos a las necesidades del mercado y ser parte del desarrollo del país, nos hemos enfocado en ampliar nuestros fines para la prestación de servicios de toda índole: mantenimiento, suministros, construcción, manufactura, importación, exportación, y distribución de todo tipo de bienes, es por ello que contamos con un equipo de trabajo multidisciplinario altamente capacitado.
+                    </p>
+</div>
+<div class="md:col-span-5 space-y-6">
+<div class="bg-deep-burgundy p-8 rounded-xl text-off-white shadow-xl">
+<h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-3 text-subtle-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">flag</span>
+                            Misión
+                        </h3>
+<p class="font-body-md text-body-md text-surface-variant/90">
+                            Brindar de manera integral soluciones multifacéticas a los requerimientos de nuestros clientes, con una excelente relación calidad y precio, generando un ambiente de satisfacción y bienestar tanto para el cliente como para nuestro personal.
+                        </p>
+</div>
+<div class="bg-white p-8 rounded-xl border border-outline-variant/30 shadow-md">
+<h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-3 text-deep-burgundy">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+                            Visión
+                        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Ser una empresa multiservicios consolidada en el mercado nacional, con responsabilidad y compromiso social, enfocados en la mejora continua para alcanzar un crecimiento rentable con impacto sostenible.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Valores -->
+<div class="mt-16 pt-16 border-t border-outline-variant/30">
+<h3 class="text-center font-headline-md text-headline-md text-deep-burgundy mb-12">Nuestros Valores</h3>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-full bg-off-white border border-subtle-gold/30 flex items-center justify-center text-subtle-gold group-hover:bg-subtle-gold group-hover:text-off-white transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">verified</span>
+</div>
+<span class="font-label-bold text-label-bold text-deep-burgundy">Satisfacción de clientes</span>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-full bg-off-white border border-subtle-gold/30 flex items-center justify-center text-subtle-gold group-hover:bg-subtle-gold group-hover:text-off-white transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">star</span>
+</div>
+<span class="font-label-bold text-label-bold text-deep-burgundy">Excelencia</span>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-full bg-off-white border border-subtle-gold/30 flex items-center justify-center text-subtle-gold group-hover:bg-subtle-gold group-hover:text-off-white transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">high_quality</span>
+</div>
+<span class="font-label-bold text-label-bold text-deep-burgundy">Calidad</span>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-full bg-off-white border border-subtle-gold/30 flex items-center justify-center text-subtle-gold group-hover:bg-subtle-gold group-hover:text-off-white transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<span class="font-label-bold text-label-bold text-deep-burgundy">Mejora continua</span>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 group">
+<div class="w-16 h-16 rounded-full bg-off-white border border-subtle-gold/30 flex items-center justify-center text-subtle-gold group-hover:bg-subtle-gold group-hover:text-off-white transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<span class="font-label-bold text-label-bold text-deep-burgundy">Compromiso Social</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Servicios y Suministros Section -->
+<section class="py-section-gap bg-surface-container-lowest" id="servicios">
+<div class="px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<div class="text-center space-y-4 mb-16">
+<h2 class="text-deep-burgundy font-headline-lg text-headline-lg">Servicios y Suministros</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl mx-auto">Soluciones profesionales diseñadas para impulsar la productividad y eficiencia de su organización.</p>
+<!-- Tab Controls -->
+<div class="flex justify-center mt-8">
+<div class="inline-flex bg-surface-container-high p-1.5 rounded-xl border border-outline-variant/30">
+<button class="px-8 py-2.5 rounded-lg font-label-bold text-label-bold transition-all bg-deep-burgundy text-on-primary shadow-sm" id="btn-servicios-main" onclick="switchTab('servicios-main')">Nuestros Servicios</button>
+<button class="px-8 py-2.5 rounded-lg font-label-bold text-label-bold transition-all text-on-surface-variant hover:text-deep-burgundy" id="btn-suministros-main" onclick="switchTab('suministros-main')">Suministros de Alto Impacto</button>
+</div>
+</div>
+</div>
+<!-- Servicios Tab Content -->
+<div class="tab-content transition-all duration-500 opacity-100 transform translate-y-0" id="servicios-main">
+<div class="bento-grid">
+<div class="bg-white p-8 rounded-xl border-l-4 border-subtle-gold card-shadow transition-all group">
+<span class="material-symbols-outlined text-4xl text-deep-burgundy mb-6 group-hover:scale-110 transition-transform">precision_manufacturing</span>
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Perforación</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Especializados en minería, petróleo y gas con tecnología de punta.</p>
+</div>
+<div class="bg-white p-8 rounded-xl border-l-4 border-subtle-gold card-shadow transition-all group">
+<span class="material-symbols-outlined text-4xl text-deep-burgundy mb-6 group-hover:scale-110 transition-transform">architecture</span>
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Construcción</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Mantenimiento de infraestructuras y obras civiles de gran escala.</p>
+</div>
+<div class="bg-white p-8 rounded-xl border-l-4 border-subtle-gold card-shadow transition-all group">
+<span class="material-symbols-outlined text-4xl text-deep-burgundy mb-6 group-hover:scale-110 transition-transform">cleaning_services</span>
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Limpieza Industrial</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Protocolos avanzados para entornos industriales complejos.</p>
+</div>
+<div class="bg-white p-8 rounded-xl border-l-4 border-subtle-gold card-shadow transition-all group">
+<span class="material-symbols-outlined text-4xl text-deep-burgundy mb-6 group-hover:scale-110 transition-transform">science</span>
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Investigación Química</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Formulación y desarrollo de productos químicos especializados.</p>
+</div>
+<div class="bg-white p-8 rounded-xl border-l-4 border-subtle-gold card-shadow transition-all group">
+<span class="material-symbols-outlined text-4xl text-deep-burgundy mb-6 group-hover:scale-110 transition-transform">directions_car</span>
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Alquiler de Vehículos</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Flota diversificada para necesidades corporativas sin chofer.</p>
+</div>
+</div>
+</div>
+<!-- Suministros Tab Content -->
+<div class="tab-content hidden opacity-0 transform translate-y-8" id="suministros-main">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white rounded-xl overflow-hidden card-shadow transition-all border border-outline-variant/20">
+<div class="h-48 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up of industrial machinery components, valves, and pipes in a high-tech facility. The lighting is clean and bright, highlighting metallic textures and industrial durability. The color palette is professional and modern, fitting for premium industrial supplies." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARPyc_VTOHKi6DLCemsQFb6x7JRuOp_Nt7s02iIzloYUaRbCFxKJ89bw1cKn_ql2e2xE2CgWPGH8IGAYq1qaqPJ9caW1srDv3aiSbRm8hQ54h-3xYlbyg8SXLuYjzg2e7TdQeLSA-oDvYCoEe4X10gAOPoSUu1MZw4DyyYWvq41O1u3odO6JsAxwDKIJ5AGs_U7r1D-cBTgdyOLZlA3ZeJxgbxasdO87AjcpnawarhSU3KZuEDhSzU7zZpcDGFrCqcqvsxMw6zY3U">
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Industriales</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Combustibles, químicos, gases y repuestos automotrices.</p>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden card-shadow transition-all border border-outline-variant/20">
+<div class="h-48 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, organized array of construction supplies including electrical components, lighting fixtures, and structural building elements. The setting is a modern warehouse with high-key lighting. The presentation is neat and technical, reflecting industrial precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdgpObqAKX-qf_iWtbbXPoChtj4_WGvL6Ojlgjc4xVGG-1iw_fjCPzGw2U9kpzuJMvSLx3nGYgajJ_R5FK86IFxHMqTvmrO_Jvc3WWdYMOAmAlK5f1ysIDRxVzb3Z1iUYuuvkbkR3cyMgrIv9q_koRgfoM_7BGns7oKlFOo68bJlnwRMBsSK9lKS9RI43xRPiHTBTGQYSACptzP15J4JeND2DguugtZHTzMxNMp-A5U4-72zC41nPYrCKbKZGAtEwHhjGOqEPbZjc">
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Para Obras</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Maquinaria, accesorios eléctricos y componentes de fabricación.</p>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden card-shadow transition-all border border-outline-variant/20">
+<div class="h-48 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Modern corporate office furniture including ergonomic chairs, modular desks, and high-end appliances in a bright, minimalist showroom. The style is contemporary and prestigious, emphasizing quality and comfort in professional settings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd6e-EfS89uhGYWSmJRjtHom1jNJ43Ns3tQYSScaUXwKG03abPvAS91XabUp88tNlvuecXOIPCYVBM9Zkp_p7zH4NOpum-CtB-LyKrXHcvUHv2FnltDXAKjBzkY6JEYybXlg-UAFUHRziWF_4Wld_fWqW7UoZptbtNAKkibCRXOSewi7MwQrNkSv2e5j6YJTAX6MM1rb0x2KmgPFCRGyE_ld3EnuIs8rADvUEr3A1ovKWj4mLJ7aVDa6oeS5n5Fser8i-BAmy5PZM">
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Mobiliario</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Muebles de oficina, electrodomésticos y equipos electrónicos.</p>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden card-shadow transition-all border border-outline-variant/20">
+<div class="h-48 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sterile, organized medical supply environment featuring surgical instruments, diagnostic tools, and protective equipment. The lighting is bright and clinical, emphasizing safety and pharmaceutical standards. The overall mood is reliable and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7d0J0KctNtUK4cxaIZM4Da69D3ZZ2MY61arjYH3J0tkNTc13oMwVWx0VgaRSRKErkOSm8WKZrGMgrDVI_sa_nNJeBE0-4SUA5cS1TJl5sAWa_c7ygTnISeWLiRUhbcJpYm2X-yEGUR7RxylgmgPa4dp6r05mcuKpnGoP0vmmvk2MIzXBzTHnEZH0aeHvlJ0aPYQOFeODbscxQfMGTItUJ937JeW-1mPZ75cioUUM9DaLuSPVUxEL-54XiVbjb8RUsH2YMefAOFVY">
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-deep-burgundy mb-2">Médicos</h4>
+<p class="text-on-surface-variant font-body-md text-body-md">Insumos quirúrgicos, farmacéuticos y equipos especializados.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Clientes Section -->
+<section class="py-24 bg-white border-y border-outline-variant/20 overflow-hidden" id="clientes">
+<div class="px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto mb-12">
+<h3 class="text-center font-headline-md text-headline-md text-industrial-taupe uppercase tracking-widest">Confían en Nosotros</h3>
+</div>
+<div class="relative w-full overflow-hidden h-24 flex items-center">
+<div class="logo-scroll gap-12 md:gap-24 px-12">
+<!-- Duplicate logos for seamless loop -->
+<div class="flex shrink-0 items-center gap-12 md:gap-24">
+<span class="text-2xl font-bold text-outline opacity-40">ACNUR</span>
+<span class="text-2xl font-bold text-outline opacity-40">ACTED</span>
+<span class="text-2xl font-bold text-outline opacity-40">PDVSA</span>
+<span class="text-2xl font-bold text-outline opacity-40 uppercase">Premiere Urgence</span>
+<span class="text-2xl font-bold text-outline opacity-40">PROMARCA</span>
+<span class="text-2xl font-bold text-outline opacity-40">QUIMICA Y DE FLUIDOS</span>
+</div>
+<div class="flex shrink-0 items-center gap-12 md:gap-24">
+<span class="text-2xl font-bold text-outline opacity-40">ACNUR</span>
+<span class="text-2xl font-bold text-outline opacity-40">ACTED</span>
+<span class="text-2xl font-bold text-outline opacity-40">PDVSA</span>
+<span class="text-2xl font-bold text-outline opacity-40 uppercase">Premiere Urgence</span>
+<span class="text-2xl font-bold text-outline opacity-40">PROMARCA</span>
+<span class="text-2xl font-bold text-outline opacity-40">QUIMICA Y DE FLUIDOS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Contacto Section -->
+<section class="py-section-gap bg-surface relative" id="contacto">
+<div class="px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<div class="grid md:grid-cols-2 gap-16">
+<!-- Form -->
+<div class="space-y-8">
+<div class="space-y-4">
+<h2 class="text-deep-burgundy font-headline-lg text-headline-lg">Hablemos</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Complete el formulario y nuestro equipo de expertos se pondrá en contacto con usted en breve.</p>
+</div>
+<form class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-deep-burgundy">Nombre</label>
+<input class="w-full bg-surface-container border-b-2 border-industrial-taupe focus:border-deep-burgundy transition-all p-3 focus:ring-0" placeholder="Ej. Juan Pérez" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-deep-burgundy">Empresa</label>
+<input class="w-full bg-surface-container border-b-2 border-industrial-taupe focus:border-deep-burgundy transition-all p-3 focus:ring-0" placeholder="Nombre de su organización" type="text">
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-deep-burgundy">Email</label>
+<input class="w-full bg-surface-container border-b-2 border-industrial-taupe focus:border-deep-burgundy transition-all p-3 focus:ring-0" placeholder="email@empresa.com" type="email">
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-deep-burgundy">Mensaje</label>
+<textarea class="w-full bg-surface-container border-b-2 border-industrial-taupe focus:border-deep-burgundy transition-all p-3 focus:ring-0 resize-none" placeholder="¿En qué podemos ayudarle?" rows="4"></textarea>
+</div>
+<button class="bg-deep-burgundy text-on-primary w-full py-4 rounded-lg font-label-bold text-label-bold hover:bg-subtle-gold hover:text-deep-burgundy transition-all flex items-center justify-center gap-2">
+                            Enviar Solicitud
+                            <span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+<!-- Info Panel -->
+<div class="bg-primary-container text-off-white p-12 rounded-2xl flex flex-col justify-between relative overflow-hidden shadow-2xl">
+<div class="absolute top-0 right-0 w-32 h-32 bg-subtle-gold/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+<div class="space-y-12 relative z-10">
+<div class="space-y-4">
+<h3 class="font-headline-md text-headline-md text-subtle-gold">Información de Contacto</h3>
+<div class="h-1 w-16 bg-subtle-gold/40"></div>
+</div>
+<div class="space-y-8">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-subtle-gold">phone_iphone</span>
+<div class="space-y-1">
+<p class="font-label-bold text-label-bold text-surface-variant/70">Teléfonos</p>
+<p class="font-body-md text-body-md">+58 0412 5430455</p>
+<p class="font-body-md text-body-md">+58 0412 5764454 / +58 0412 2690580</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-subtle-gold">mail</span>
+<div class="space-y-1">
+<p class="font-label-bold text-label-bold text-surface-variant/70">Canales Digitales</p>
+<p class="font-body-md text-body-md">info@inversionesfv.com</p>
+<p class="font-body-md text-body-md">contratos@inversionesfv.com</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-subtle-gold">location_on</span>
+<div class="space-y-1">
+<p class="font-label-bold text-label-bold text-surface-variant/70">Ubicación</p>
+<p class="font-body-md text-body-md">Venezuela. Operaciones a nivel nacional.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex gap-4">
+<a class="w-10 h-10 rounded-full border border-surface-variant/20 flex items-center justify-center hover:bg-subtle-gold hover:text-deep-burgundy transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full border border-surface-variant/20 flex items-center justify-center hover:bg-subtle-gold hover:text-deep-burgundy transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full border-t border-subtle-gold/30">
+<div class="px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="space-y-6 max-w-sm">
+<div class="flex items-center gap-4"><img alt="Footer Logo" class="h-16 object-contain brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjNfj9jGB9WW2mikG5LipIZ7PjbuiqF-2z5NRGci4kAtW6ALnAOY02RGPExkRBfiDcz-c7uiBVGsIGu3rcjjl-C_b9ZjPr9Pt8WkeZJmaTtv01DIiChps4g-9p1C-4nY-SJSbHv1IHvA_Hn7Lu7z8Arpn7QOFTc6J4jGvADVBCfaSJ5XxltA1KXoH4WC4oEi6c7sYPK454CiJc8nFnuRCRr2bua-7aWsUf4tTTC0kFFZf4F60m9Jyd84OpNPFXo1sE8yqvw34ENOM"></div>
+<p class="text-surface-variant/80 font-body-md text-body-md">Comprometidos con la excelencia operativa y el desarrollo productivo nacional, brindando soluciones integrales de alto impacto.</p>
+</div>
+<div class="grid grid-cols-2 gap-12">
+<div class="space-y-6">
+<h4 class="font-label-bold text-label-bold text-subtle-gold uppercase tracking-widest">Empresa</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-surface-variant/80 hover:text-off-white transition-colors" href="#nosotros">Misión y Visión</a></li>
+<li class=""><a class="text-surface-variant/80 hover:text-off-white transition-colors" href="#nosotros">Nuestros Valores</a></li>
+<li class=""><a class="text-surface-variant/80 hover:text-off-white transition-colors" href="#clientes">Nuestros Clientes</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-bold text-label-bold text-subtle-gold uppercase tracking-widest">Servicios</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-surface-variant/80 hover:text-off-white transition-colors" href="#servicios">Suministros</a></li>
+<li class=""><a class="text-surface-variant/80 hover:text-off-white transition-colors" href="#">Aviso Legal</a></li>
+<li class=""><a class="text-surface-variant/80 hover:text-off-white transition-colors" href="#">Privacidad</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="border-t border-off-white/10 py-6">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-surface-variant/60 font-body-md text-body-md text-center md:text-left">© 2024 Inversiones FV. Todos los derechos reservados.</p>
+<div class="flex items-center gap-2 text-subtle-gold font-label-bold text-label-bold">
+<span class="material-symbols-outlined text-sm">verified</span>
+                    Certificación de Calidad Corporativa
+                </div>
+</div>
+</div>
+</footer>
+<script>
+        function switchTab(tabId) {
+            // Hide all content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('opacity-100', 'translate-y-0');
+                content.classList.add('opacity-0', 'translate-y-8');
+            });
+
+            // Show target content
+            const target = document.getElementById(tabId);
+            target.classList.remove('hidden');
+            setTimeout(() => {
+                target.classList.add('opacity-100', 'translate-y-0');
+                target.classList.remove('opacity-0', 'translate-y-8');
+            }, 50);
+
+            // Update buttons
+            const btnServicios = document.getElementById('btn-servicios-main');
+            const btnSuministros = document.getElementById('btn-suministros-main');
+
+            if (tabId === 'servicios-main') {
+                btnServicios.classList.add('bg-deep-burgundy', 'text-on-primary', 'shadow-sm');
+                btnServicios.classList.remove('text-on-surface-variant');
+                btnSuministros.classList.remove('bg-deep-burgundy', 'text-on-primary', 'shadow-sm');
+                btnSuministros.classList.add('text-on-surface-variant');
+            } else {
+                btnSuministros.classList.add('bg-deep-burgundy', 'text-on-primary', 'shadow-sm');
+                btnSuministros.classList.remove('text-on-surface-variant');
+                btnServicios.classList.remove('bg-deep-burgundy', 'text-on-primary', 'shadow-sm');
+                btnServicios.classList.add('text-on-surface-variant');
+            }
+        }
+
+        // Header Scroll Interaction
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'shadow-lg');
+                header.classList.remove('py-4', 'shadow-sm');
+            } else {
+                header.classList.add('py-4', 'shadow-sm');
+                header.classList.remove('py-2', 'shadow-lg');
+            }
+        });
+    </script>
+
+
+</body></html>
